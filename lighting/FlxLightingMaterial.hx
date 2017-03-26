@@ -55,7 +55,7 @@ class FlxLightingMaterial extends FlxMaterial
 		u_resolution[1] = normalMap.data.height;
 		
 		data.resolution.value = u_resolution;
-		setTexture("normalMap", normalMap.graphic);
+		setTexture("normalMap", normalMap.data);
 	}
 	
 	/**

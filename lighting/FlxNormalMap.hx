@@ -28,11 +28,6 @@ class FlxNormalMap
 	public var data:BitmapData;
 	
 	/**
-	 * Graphic object for the normal map
-	 */
-	public var graphic:FlxGraphic; // TODO: remove this var...
-	
-	/**
 	 * The raw bitmap data of the alpha mask
 	 */
 	public var alphaMask:BitmapData;
@@ -50,8 +45,6 @@ class FlxNormalMap
 			data = FlxAssets.getBitmapData(PathToData);
 		if (PathToAlphaMask != null)
 			alphaMask = FlxAssets.getBitmapData(PathToAlphaMask);
-		
-		graphic = FlxGraphic.fromBitmapData(data);
 		
 		x = X;
 		y = Y;
