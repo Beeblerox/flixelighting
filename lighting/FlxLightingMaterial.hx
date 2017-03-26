@@ -51,11 +51,13 @@ class FlxLightingMaterial extends FlxMaterial
 	 */
 	public function addNormalMap(normalMap:FlxNormalMap):Void
 	{
+		#if FLX_RENDER_GL
 		u_resolution[0] = normalMap.data.width;
 		u_resolution[1] = normalMap.data.height;
 		
 		data.resolution.value = u_resolution;
 		setTexture("normalMap", normalMap.data);
+		#end
 	}
 	
 	/**
@@ -109,12 +111,15 @@ class FlxLightingMaterial extends FlxMaterial
 	
 	private function updateUniforms():Void
 	{
+		#if FLX_RENDER_GL
 		data.ambient.value = u_ambient;
 		data.ambientIntensity.value = u_ambientIntensity;
+		#end
 	}
 	
 	private function passInto(identifier:Int, l:FlxLight):Void
 	{
+		#if FLX_RENDER_GL
 		switch (identifier)
 		{
 			case 0: data.light0.value = l.getMatrix();
@@ -126,6 +131,7 @@ class FlxLightingMaterial extends FlxMaterial
 			case 6: data.light6.value = l.getMatrix();
 			case 7: data.light7.value = l.getMatrix();
 		}
+		#end
 	}
 }
 
