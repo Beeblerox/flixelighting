@@ -112,8 +112,11 @@ class FlxLight extends FlxSprite
 		var screenWidth:Float = Lib.current.stage.stageWidth;
 		var screenHeight:Float = Lib.current.stage.stageHeight;
 		
-		lightMatrix[0] = screenWidth * (x / FlxG.width);
-		lightMatrix[1] = screenHeight * (screenHeight - y) / FlxG.height; // invert light's y position
+		var scaleX = FlxG.scaleMode.scale.x;
+		var scaleY = FlxG.scaleMode.scale.y;
+		
+		lightMatrix[0] = screenWidth * (x / FlxG.width) * scaleX * scaleX;
+		lightMatrix[1] = screenHeight * (screenHeight - y * scaleY) / FlxG.height * scaleY; // invert light's y position
 		lightMatrix[2] = z;
 		lightMatrix[3] = Math.min(1.0, Math.max(0.0, intensity));
 		
